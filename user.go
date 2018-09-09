@@ -9,26 +9,27 @@ type User struct {
 	Type       string `json:"type"`
 	ID         string `json:"id"`
 	Attributes struct {
-		FirstName       string   `json:"first_name"`
-		LastName        string   `json:"last_name"`
-		FullName        string   `json:"full_name"`
-		Vanity          string   `json:"vanity"`
-		Email           string   `json:"email"`
-		About           string   `json:"about"`
-		FacebookId      string   `json:"facebook_id"`
-		Gender          int      `json:"gender"`
-		HasPassword     bool     `json:"has_password"`
-		ImageURL        string   `json:"image_url"`
-		ThumbURL        string   `json:"thumb_url"`
-		YouTube         string   `json:"youtube"`
-		Twitter         string   `json:"twitter"`
-		Facebook        string   `json:"facebook"`
-		IsEmailVerified bool     `json:"is_email_verified"`
-		IsSuspended     bool     `json:"is_suspended"`
-		IsDeleted       bool     `json:"is_deleted"`
-		IsNuked         bool     `json:"is_nuked"`
-		Created         NullTime `json:"created"`
-		URL             string   `json:"url"`
+		FirstName         string            `json:"first_name"`
+		LastName          string            `json:"last_name"`
+		FullName          string            `json:"full_name"`
+		Vanity            string            `json:"vanity"`
+		Email             string            `json:"email"`
+		About             string            `json:"about"`
+		FacebookId        string            `json:"facebook_id"`
+		Gender            int               `json:"gender"`
+		HasPassword       bool              `json:"has_password"`
+		ImageURL          string            `json:"image_url"`
+		ThumbURL          string            `json:"thumb_url"`
+		YouTube           string            `json:"youtube"`
+		Twitter           string            `json:"twitter"`
+		Facebook          string            `json:"facebook"`
+		IsEmailVerified   bool              `json:"is_email_verified"`
+		IsSuspended       bool              `json:"is_suspended"`
+		IsDeleted         bool              `json:"is_deleted"`
+		IsNuked           bool              `json:"is_nuked"`
+		Created           NullTime          `json:"created"`
+		URL               string            `json:"url"`
+		SocialConnections SocialConnections `json:"social_connections"`
 	} `json:"attributes"`
 	Relationships struct {
 		Pledges *PledgesRelationship `json:"pledges,omitempty"`
@@ -42,4 +43,19 @@ type UserResponse struct {
 	Links    struct {
 		Self string `json:"self"`
 	} `json:"links"`
+}
+
+type SocialConnections struct {
+	DeviantArt *SocialConnection `json:"deviantart"`
+	Discord    *SocialConnection `json:"discord"`
+	Facebook   *SocialConnection `json:"facebook"`
+	Spotify    *SocialConnection `json:"spotify"`
+	Twitch     *SocialConnection `json:"twitch"`
+	Twitter    *SocialConnection `json:"twitter"`
+	Youtube    *SocialConnection `json:"youtube"`
+}
+
+type SocialConnection struct {
+	UserID string `json:"user_id"`
+	URL    string `json:"url"`
 }
